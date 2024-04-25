@@ -29,6 +29,11 @@ def main():
     returns_dqn = np.load('/home/kaushal/spring_2024/CS5180_RL/learning-on-the-highway/q_learning_based_methods/returns_highway_dqn.npy')  # noqa
     returns_dqn_per = np.load('/home/kaushal/spring_2024/CS5180_RL/learning-on-the-highway/q_learning_based_methods/returns_hwy_dqn_per.npy')  # noqa
     returns_ddqn_per = np.load('/home/kaushal/spring_2024/CS5180_RL/learning-on-the-highway/q_learning_based_methods/returns_hwy_ddqn_per.npy')  # noqa
+    returns_ddqn = np.load('/home/kaushal/spring_2024/CS5180_RL/learning-on-the-highway/q_learning_based_methods/returns_highway_ddqn.npy')  # noqa
+    returns_dqn = np.mean(returns_dqn, axis=0)
+    returns_dqn_per = np.mean(returns_dqn_per, axis=0)
+    returns_ddqn_per = np.mean(returns_ddqn_per, axis=0)
+    returns_ddqn = np.mean(returns_ddqn, axis=0)
 
     # # Lighter Red color
     # light_red = (1.0, 0.6, 0.6)
@@ -39,28 +44,38 @@ def main():
 
     # plt.plot(returns_dqn, label='Raw Data DQN', color=light_red)
     data = moving_average(data=returns_dqn, window_size=1000)
-    plt.plot(data, label='Smoothened Data DQN', color='red')
+    plt.plot(data, label='Returns for DQN', color='red', linewidth=2)
     plt.legend()
     plt.xlabel('Episodes')
     plt.ylabel('Returns')
 
-    # plt.plot(returns_dqn_per, label='Raw Data', color=light_green)
+    # plt.plot(returns_dqn_per, label='Raw Data DQN with PER',
+    # color=light_green)
     data = moving_average(data=returns_dqn_per, window_size=1000)
-    plt.plot(data, label='Smoothened data DQN with PER', color='green')
+    plt.plot(data, label='Returns for DQN with PER', color='green',
+             linewidth=2)
     plt.legend()
-    plt.title('Returns For Highway Fast: DQN, Prioritized Experience Replay')
     plt.xlabel('Episodes')
     plt.ylabel('Returns')
 
-    # plt.plot(returns_ddqn_per, label='Raw Data', color=light_blue)
+    # plt.plot(returns_ddqn_per, label='Raw Data DDQN with PER',
+    #          color=light_blue)
     data = moving_average(data=returns_ddqn_per, window_size=1000)
-    plt.plot(data, label='Smoothened data DDQN with PER', color='blue')
+    plt.plot(data, label='Returns for DDQN with PER', color='blue',
+             linewidth=2)
     plt.legend()
-    plt.title('Returns For Highway Fast: DDQN, Prioritized Experience Replay')
     plt.xlabel('Episodes')
     plt.ylabel('Returns')
 
+    data = moving_average(data=returns_ddqn, window_size=1000)
+    plt.plot(data, label='Returns for DDQN', color='black', linewidth=2)
     plt.legend()
+    plt.xlabel('Episodes')
+    plt.ylabel('Returns')
+
+    # plt.title('Returns For Highway Fast for 25000 Steps: Target Update at 50, Replay 200')
+    plt.legend()
+    plt.grid(True)
     plt.show()
 
 
