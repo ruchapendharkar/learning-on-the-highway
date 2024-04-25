@@ -2,7 +2,7 @@
 
 ## Overview
 
-Our work aims to conduct a comparative analysis of reinforcement learning algorithms using the highway-environment developed by OpenAI Gymnasium. Specifically, we focus on three main methods: Deep Q-learning, Proximal Policy Optimization (PPO), and Actor-Critic. While previous research exists on the highway-environment, there is limited exploration of these specific algorithms. We believe it would be valuable to implement these algorithms from scratch and evaluate their performance on this environment.
+Our work aims to conduct a comparative analysis of reinforcement learning algorithms using the highway-environment developed by OpenAI Gymnasium. Specifically, we focus on three main methods: Deep Q-learning, Proximal Policy Optimization (PPO), and Actor-Critic. While previous research exists on the highway-environment, there is limited implementation of these specific algorithms. We believe it would be valuable to implement these algorithms from scratch and evaluate their performance on this environment, comparing them.
 
 ## Objective
 
